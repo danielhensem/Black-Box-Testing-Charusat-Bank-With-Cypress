@@ -15,8 +15,10 @@ describe('User transfer money', () => {
     });
 
     it('Insert valid receiver account & valid amount', () => {
-        cy.allure().severity('blocker');  // most critical
-        cy.allure().story('Valid Transfer').step('Enter valid receiver account and amount');
+        cy.allure().feature('Money Transfer');
+        cy.allure().story('Valid Transfer');
+        cy.allure().severity('blocker');
+        cy.allure().step('Enter valid receiver account and amount');
         cy.get('input[name="otherNo"]').type('1748751310');
         cy.contains('Get Account Info').click();
         cy.get('input[name="amount"]').type('3000');
@@ -29,8 +31,10 @@ describe('User transfer money', () => {
     });
 
     it('Insert invalid amount less than 3000', () => {
-        cy.allure().severity('critical');  // important business rule
-        cy.allure().story('Invalid Transfer').step('Enter valid account but amount < 3000');
+        cy.allure().feature('Money Transfer');
+        cy.allure().story('Invalid Transfer');
+        cy.allure().severity('critical');
+        cy.allure().step('Enter valid account but amount < 3000');
         cy.get('input[name="otherNo"]').type('1748751310');
         cy.contains('Get Account Info').click();
         cy.get('input[name="amount"]').type('2000');
@@ -43,8 +47,10 @@ describe('User transfer money', () => {
     });
 
     it('Insert invalid amount exceeding balance', () => {
+        cy.allure().feature('Money Transfer');
+        cy.allure().story('Invalid Transfer');
         cy.allure().severity('critical');
-        cy.allure().story('Invalid Transfer').step('Enter amount exceeding balance');
+        cy.allure().step('Enter amount exceeding balance');
         cy.get('input[name="otherNo"]').type('1748751310');
         cy.contains('Get Account Info').click();
         cy.get('input[name="amount"]').type('10000000');
@@ -57,8 +63,10 @@ describe('User transfer money', () => {
     });
 
     it('Insert invalid account number: no number', () => {
-        cy.allure().severity('normal');  // less critical
-        cy.allure().story('Invalid Account').step('Enter non-numeric account');
+        cy.allure().feature('Money Transfer');
+        cy.allure().story('Invalid Account');
+        cy.allure().severity('normal');
+        cy.allure().step('Enter non-numeric account');
         cy.get('input[name="otherNo"]').type('daniel');
         cy.contains('Get Account Info').click();
 
@@ -67,8 +75,10 @@ describe('User transfer money', () => {
     });
 
     it('Insert invalid account number: nonexistent account number', () => {
+        cy.allure().feature('Money Transfer');
+        cy.allure().story('Invalid Account');
         cy.allure().severity('normal');
-        cy.allure().story('Invalid Account').step('Enter nonexistent account number');
+        cy.allure().step('Enter nonexistent account number');
         cy.get('input[name="otherNo"]').type('191919191919');
         cy.contains('Get Account Info').click();
 
