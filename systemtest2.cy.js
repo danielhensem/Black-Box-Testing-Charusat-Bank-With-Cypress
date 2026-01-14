@@ -1,3 +1,5 @@
+import "@shelex/cypress-allure-plugin";
+
 /// <reference types="cypress" />
 //case 1
 describe('Manager add user test cases', () => {
